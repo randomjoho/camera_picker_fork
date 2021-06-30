@@ -825,9 +825,8 @@ class CameraPickerState extends State<CameraPicker>
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Row(
             children: <Widget>[
-              if ((cameras?.length ?? 0) > 1) switchCamerasButton,
+              if ((cameras?.length ?? 0) > 1 &&widget.showSwitchCameraBtn) switchCamerasButton,
               const Spacer(),
-              if(widget.showSwitchCameraBtn)
               switchFlashesButton(v),
             ],
           ),
