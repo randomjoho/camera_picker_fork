@@ -219,11 +219,15 @@ class _CameraPickerViewerState extends State<CameraPickerViewer> {
           );
           break;
         case CameraPickerViewType.video:
-          // saveFuture = PhotoManager.editor.saveVideo(
-          //   previewFile,
-          //   title: previewFile.path,
-          // );
-          saveFuture = Future<AssetEntity>.sync(() => AssetEntity(id: previewFile.path));
+          if(Platform.isIOS){
+            saveFuture = PhotoManager.editor.saveVideo(
+              previewFile,
+              title: previewFile.path,
+            );
+          }else{
+            saveFuture = Future<AssetEntity>.sync(() => AssetEntity(id: previewFile.path)); 
+          }
+          
           break;
       }
 
